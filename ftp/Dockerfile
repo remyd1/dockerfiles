@@ -9,7 +9,8 @@ ENV FTP_PASS admin
 ENV PASV_ADDRESS REQUIRED
 
 COPY vsftpd.conf /etc/vsftpd/
-COPY vsftpd.conf /etc/
+RUN rm -f /etc/vsftpd.conf
+RUN ln -s /etc/vsftpd/vsftpd.conf /etc/vsftpd.conf
 COPY vsftpd_virtual /etc/pam.d/
 COPY run-vsftpd.sh /usr/sbin/
 
